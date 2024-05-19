@@ -1,19 +1,23 @@
-﻿using static DZ4.Program;
-
-namespace DZ4
+﻿namespace DZ4_2.ZAD
 {
     internal class Program
     {
         static void Main(string[] args)
         {
+
+            LogInPageFactory chromeLogInPageFactory = new ChromeLogInPageFactory();
+            ILogInPage page = chromeLogInPageFactory.CreatePage();
             
-            
-            IMailBuilder mailBuilder = new MailBuilder();
-            SMTP smtp = new SMTP(mailBuilder);
+            WebElement webElement1 = page.loginButton();
+            webElement1.Click();
+            webElement1 = page.usernameInput();
+            webElement1.Click();
+            webElement1 = page.passwordInput();
+           
+            webElement1.Click();
 
 
-            smtp.SendNoReplyMail();
-            smtp.SendMail();
+
 
 
 
